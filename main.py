@@ -2,8 +2,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import uvicorn
-from pydantic import field_validator
-from pyexpat.errors import messages
 
 import models  # Задание 1.4-1.5
 
