@@ -27,11 +27,15 @@ async def task_1_3(num1: int, num2: int):
 
 
 # Задание 1.4
-@app.get("/task_1_4/user", tags=["Task_1_4"], response_model=models.User)
-async def task_1_4():
-    user = models.User(name="Max Gvriti", id=1)
+users_db = {}
+@app.post("/task_1_4/user", response_model=models.User, tags=["Task_1_4"])
+def create_user(user: models.User):
+    users_db[user.id] = user
     return user
 
+@app.get("/task_1_4/users", tags=["Task_1_4"])
+def task_1_4(user_id: int):
+    return users_db[user_id]
 
 # Задание 1.5
 @app.post("/task_1_5/user", tags=["Task_1_5"])
